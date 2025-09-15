@@ -11,7 +11,7 @@ jobs:
         board: [RPI_PICO]
     steps:
       - name: Checkout del repositorio
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5.0.0
 
       - name: Instalar dependencias
         run: |
@@ -46,7 +46,7 @@ jobs:
           make BOARD=${{ matrix.board }} clean
           make BOARD=${{ matrix.board }} USER_C_MODULES=$GITHUB_WORKSPACE/micropython/user_modules/lv_binding_micropython/bindings.cmake
           ls -lh ${GITHUB_WORKSPACE}/micropython/ports/rp2/build-${{ matrix.board }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: echo "This job's status is ${{ job.status }}."
 
       - name: Clone Pico SDK
         run: |
@@ -93,7 +93,7 @@ jobs:
         run: echo "TAG_NAME=release-$(date +'%Y%m%d-%H%M')" >> $GITHUB_ENV
   
       - name: GH Release
-        uses: softprops/action-gh-release@v2.0.8
+        uses: softprops/action-gh-release@v2.3.3
         with:
           tag_name: ${{ env.TAG_NAME }}
           name: "MicroPython with LVGL for RP2 Release version ${{ env.MPY_VERSION }} (Build ${{ env.TAG_NAME }})"
