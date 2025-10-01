@@ -1,5 +1,5 @@
 name: rp2 port
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: ${{ github.actor }} is testing out GitHub Actions
 permissions:
   contents: write
 on: [push]
